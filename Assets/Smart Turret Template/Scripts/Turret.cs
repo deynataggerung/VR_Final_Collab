@@ -21,6 +21,7 @@ public class TurretParameters {
 	public float ShootingDelay;
 	[Tooltip("Radius of the turret view")]
 	public float radius;
+	public int health;
 }
 
 [System.Serializable]
@@ -130,6 +131,10 @@ public class Turret : MonoBehaviour {
         {
             GetComponent<Animator>().SetTrigger("Stop");
         }
+    }
+
+    public void ReceiveDamage(float power, RaycastHit point) {
+    	parameters.health -= (int)power;
     }
 
 	public void Aiming() {
